@@ -24,3 +24,5 @@ class Email:
         print('Dominio: ',self.__dom)
         print('Tipo Dominio: ',self.__tipoDom)
 
+    def retornaId(self):
+        return self.__id
