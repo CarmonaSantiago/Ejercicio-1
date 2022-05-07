@@ -41,26 +41,29 @@ if __name__ == '__main__':
 
     #Apartado 4
 
-    archivo=open('correos.csv')
+   archivo=open('correos.csv')
     reader=csv.reader(archivo,delimiter=',')
     i=1
-    listaId=[]  #Lista Vacía
+    listaEmails=[]  #Lista Vacía
     for fila in reader:
-        locals()["correo"+str(i)]= Email(fila[0],fila[1],fila[2]) #Locals retorna variables que inician con correo
-        listaId.append(fila[0])
+        correo= Email(fila[0],fila[1],fila[2])
+        listaEmails.append(correo)
+
+    for objeto in listaEmails:
         print(f'correo{i}:Email ')
-        locals()["correo"+str(i)].mostrarDatos()
+        objeto.mostrarDatos()
         print('\n')
         i += 1
+
+
     ingresa=input('Ingrese identificador de cuenta: ')
     band = False
-    tamanio=len(listaId)
-    contador=0
-    while band == False and contador <= tamanio :
-        for id in listaId or contador==tamanio:
-            contador+=1
-            if id == ingresa:
-                band=True
+    long = len(listaEmails)
+
+    for objeto in listaEmails:
+        id=objeto.retornaId()
+        if id == ingresa:
+            band=True
     if band == True:
         print('Identificador esta repetido')
     else:
